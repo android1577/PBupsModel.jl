@@ -23,6 +23,7 @@ export
     LoadData,
     TrialData,
     WriteData,
+    split_trials_by_parity,
 
 # model_likelihood 
     logProbRight,
