@@ -1,3 +1,4 @@
 name = "PBupsModel"                                                                                  
-uuid = "ebaa91b7-151d-4faa-9235-e6535befbc38"                                                                      
+uuid = "ebaa91b7-151d-4faa-9235-e6535befbc38"
+authors = ["Alice M. Yoon <misun6312@gmail.com>"]
 version = "0.1.0"                                                                                                  
