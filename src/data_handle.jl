@@ -43,3 +43,25 @@ function WriteFile(mpath, filename, D)
    matwrite(saveto_filename, D)
 end
 
+# Parity Split
+function split_trials_by_parity(data::Dict{String,Any}, parity::String)
+    total_trials = Int(data["total_trials"])
+    rawdata = data["rawdata"]
+
+    if parity == "even"
+        train_indices = 1:2:total_trials
+        test_indices = 2:2:total_trials
+    elseif parity == "odd"
+        train_indices = 2:2:total_trials
+        test_indices = 1:2:total_trials
+    else
+        error("Invalid parity choice. Must be 'even' or 'odd'.")
+    end
+
+    train_data = Dict("total_trials" => length(train_indices), 
+                       "rawdata" => Dict(k => v[train_indices] for (k,v) in rawdata))
+    test_data = Dict("total_trials" => length(test_indices),
+                      "rawdata" => Dict(k => v[test_indices] for (k, v) in rawdata))
+
+    return train_data, test_data
+end
